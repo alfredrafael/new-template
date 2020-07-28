@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import Home from './components/Home';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Navbar from './components/NavigationBar/NavigationBar';
+import Footer from './components/Footer/Footer';
+import Page2 from './components/Page2/Page2';
+import $ from 'jquery';
 
-function App() {
+
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+    <Navbar />
+      <Router>
+
+
+        {/* //////////////////////////////////////////////////////////////////////// */}
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/page-2" component={Page2} />
+
+          <Route render={() => <h2 style={{ paddingTop: '15%' }}>404 Page not found</h2>} />
+
+        </Switch>
+        {/* //////////////////////////////////////////////////////////////////////// */}
+
+
+        <Footer />
+      </Router>
+
+
+    </React.Fragment>
   );
 }
 
